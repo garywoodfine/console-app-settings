@@ -1,0 +1,6 @@
+[Unit]
+Description= FizzBuzz Service
+ 
+[Service]
+#Tell systemd which program to start
+ExecStart=/usr/local/bin/dotnet /opt/daemons/fizzbuzz/FizzBuzz.dll "Gary"
