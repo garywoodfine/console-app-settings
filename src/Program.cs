@@ -1,7 +1,7 @@
 ﻿using System;
-
-
-
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.FileExtensions;
+using Microsoft.Extensions.Configuration.Json;
 
 
 namespace FizzBuzz
@@ -10,8 +10,14 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
+
+            IConfiguration config = new ConfigurationBuilder()
+          .AddJsonFile("appsettings.json", true, true)
+          .Build();
+
+
            
-            Console.WriteLine($" Hello {args[0] } !");
+            Console.WriteLine($" Hello { config["name"] } !");
         }
     }
 }
