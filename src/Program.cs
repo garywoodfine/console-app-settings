@@ -1,23 +1,29 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.FileExtensions;
-using Microsoft.Extensions.Configuration.Json;
+using System.Collections.Generic;
 
 
 namespace FizzBuzz
 {
     class Program
     {
+
+        public static IConfiguration Configuration { get; set; }
         static void Main(string[] args)
         {
+            var builder = new ConfigurationBuilder()
+             .SetBasePath(Directory.GetCurrentDirectory())
+             .AddJsonFile("appsettings.json");
 
-            IConfiguration config = new ConfigurationBuilder()
-          .AddJsonFile("appsettings.json", true, true)
-          .Build();
-
-
+            Configuration = builder.Build();
            
-            Console.WriteLine($" Hello { config["name"] } !");
+           
+            Console.WriteLine(Configuration.GetSection("application")["name"]);
+
+
+
+
         }
     }
 }
