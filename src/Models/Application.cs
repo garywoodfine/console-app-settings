@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
+
 namespace FizzBuzz.Models
 {
     [JsonObject("application")]    
@@ -6,5 +8,8 @@ namespace FizzBuzz.Models
     {
         [JsonProperty("name")]
         public string Name { get; set; }
+
+         [JsonProperty("modulos")]
+         public List<Modulo> Modulos { get; set; }
     }
 }
