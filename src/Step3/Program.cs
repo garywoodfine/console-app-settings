@@ -9,15 +9,19 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
+            // You could either use this 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
+                .AddJsonFile("appsettings.json")
+                .Build();
 
+            // Or this approach to get your configuration
             IConfiguration config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
 
-            var appConfig = config.GetSection("application").Get<Application>();;
+            // Then get your values using this approach
+            var appConfig = builder.GetSection("application").Get<Application>();;
 
             Console.WriteLine($"Application Name : {appConfig.Name}");
         }
