@@ -21,7 +21,7 @@ namespace FizzBuzz
                 .Build();
 
             // Then get your values using this approach
-            var appConfig = builder.GetSection("application").Get<Application>();;
+            var appConfig = builder.GetSection("application").Get<Application>();
 
             Console.WriteLine($"Application Name : {appConfig.Name}");
         }
